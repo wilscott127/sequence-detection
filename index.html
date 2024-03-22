@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Key Detection</title>
+    <script type="text/javascript" src="./cornify.js"></script>
+    <link rel="icon" href="https://fav.farm/✅" />
+    <!-- Travis Scott 3-20-24 -->
+  <!-- Adapted from https://javascript30.com/ JavaScript Key Detection -->
+  <!-- New Learning Concepts: event listener making use of key press, accessing the event object in order
+    to identify the key pressed, the ability to push pressed keys to an array and splice the array.-->
+  <!--Added h1 tag to start game, used image constructor to display congratulations image if secret code is typed.-->
+  </head>
+  <body>
+
+    <h1>Can you guess the secret code?  The secret code rhymes with 'name'!</h1>
+    <script>
+      const pressed = [];
+      const secretCode = "game";
+
+      window.addEventListener("keyup", (e) => {
+        console.log(e.key);
+        pressed.push(e.key);
+        pressed.splice(
+          -secretCode.length - 1,
+          pressed.length - secretCode.length
+        );
+        if (pressed.join("").includes(secretCode)) {
+          console.log("DING DING!");
+          const myImage = new Image(200, 250);
+          myImage.src = "congratulations.jpg";
+          document.body.appendChild(myImage);
+          
+        }
+        console.log(pressed);
+      });
+
+
+
+
+
+    </script>
+  </body>
+</html>
